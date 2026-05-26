@@ -5,7 +5,7 @@ import BlurText from './reactbits/BlurText';
 const integrations = [
   { name: 'WhatsApp', role: 'Official API', logo: 'https://cdn.simpleicons.org/whatsapp/25D366' },
   { name: 'Midtrans', role: 'Payment Gateway', logo: 'https://cdn.simpleicons.org/midtrans/00897B' },
-  { name: 'Konva', role: 'Canvas Editor', logo: 'https://konvajs.org/img/konva-logo.svg' },
+  { name: 'Konva', role: 'Canvas Editor', logo: 'https://cdn.simpleicons.org/konva/0D83CD' },
   { name: 'Laravel', role: 'Core Engine', logo: 'https://cdn.simpleicons.org/laravel/FF2D20' },
   { name: 'Redis', role: 'Queue & Cache', logo: 'https://cdn.simpleicons.org/redis/DC382D' },
 ];

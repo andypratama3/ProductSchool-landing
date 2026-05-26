@@ -58,7 +58,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.desc': 'Leave manual data entry behind. Automate admissions, Digital Report Cards, Tuition, and Payroll in a single Enterprise-grade ecosystem.',
     'hero.bullet1': 'Generate automated report cards to national standards',
     'hero.bullet2': 'Automated attendance & recaps via WhatsApp',
-    'hero.bullet3': 'Payment gateway integration (Midtrans, Stripe)',
+    'hero.bullet3': 'Payment gateway integration (Midtrans, Xendit)',
     'hero.bullet4': 'Analytics dashboard for principals & teachers',
     'hero.trial': 'Start 14-Day Free Trial',
     'hero.schools_joined': '200+ Schools Joined',

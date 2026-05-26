@@ -54,7 +54,7 @@ export function Footer() {
               <li><Link to="/#fitur" className="hover:text-white transition-colors">PPDB Online</Link></li>
               <li><Link to="/#fitur" className="hover:text-white transition-colors">SPP Otomatis Midtrans</Link></li>
               <li><Link to="/#fitur" className="hover:text-white transition-colors">Absensi GPS Guru</Link></li>
-              <li><a href="/docs" className="hover:text-white transition-colors">Early Warning System</a></li>
+              <li><Link to="/docs" className="hover:text-white transition-colors">Early Warning System</Link></li>
             </ul>
           </div>
           
