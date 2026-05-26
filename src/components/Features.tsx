@@ -94,7 +94,7 @@ export function Features() {
                   {feature.description}
                 </p>
                 <div className="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700">
-                  <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed italic">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
                     <span className="not-italic font-semibold">Tips:</span> {feature.forBeginners}
                   </p>
                 </div>

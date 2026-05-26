@@ -21,17 +21,18 @@ export function Footer() {
             <div className="pt-4">
               <h4 className="text-[10px] font-bold text-white mb-2 uppercase tracking-wider">Berlangganan Buletin</h4>
               <p className="text-[10px] text-slate-500 mb-3">Dapatkan tips dan info terbaru seputar digitalisasi sekolah.</p>
-              <div className="flex w-full max-w-sm items-center space-x-2">
+              <form onSubmit={(e) => { e.preventDefault(); alert('Terima kasih! Fitur newsletter akan segera hadir.'); }} className="flex w-full max-w-sm items-center space-x-2">
                 <input 
                   type="email" 
                   placeholder="Email sekolah Anda" 
                   className="flex-1 px-3 py-2 text-xs bg-slate-800 text-white rounded-lg border border-slate-700 outline-none focus:border-primary placeholder:text-slate-500 transition-colors"
                   aria-label="Email untuk newsletter"
+                  required
                 />
-                <button className="bg-primary hover:bg-primary-dark text-white px-3 py-2 rounded-lg flex items-center justify-center text-xs font-bold transition-colors" aria-label="Langganan newsletter">
+                <button type="submit" className="bg-primary hover:bg-primary-dark text-white px-3 py-2 rounded-lg flex items-center justify-center text-xs font-bold transition-colors" aria-label="Langganan newsletter">
                   <Send className="w-3 h-3" />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
           
@@ -39,9 +40,9 @@ export function Footer() {
             <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Produk & Fitur</h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li><Link to="/" className="hover:text-white transition-colors">Beranda</Link></li>
-              <li><a href="/#fitur" className="hover:text-white transition-colors">Fitur Produk</a></li>
-              <li><a href="/#harga" className="hover:text-white transition-colors">Harga Paket</a></li>
-              <li><a href="/#tentang" className="hover:text-white transition-colors">Testimoni</a></li>
+              <li><Link to="/#fitur" className="hover:text-white transition-colors">Fitur Produk</Link></li>
+              <li><Link to="/#harga" className="hover:text-white transition-colors">Harga Paket</Link></li>
+              <li><Link to="/#tentang" className="hover:text-white transition-colors">Testimoni</Link></li>
               <li><Link to="/docs" className="hover:text-white transition-colors">Dokumentasi & Panduan</Link></li>
             </ul>
           </div>
@@ -49,10 +50,10 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Fitur Unggulan</h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><a href="/#fitur" className="hover:text-white transition-colors">Rapor Digital Kurikulum Merdeka</a></li>
-              <li><a href="/#fitur" className="hover:text-white transition-colors">PPDB Online</a></li>
-              <li><a href="/#fitur" className="hover:text-white transition-colors">SPP Otomatis Midtrans</a></li>
-              <li><a href="/#fitur" className="hover:text-white transition-colors">Absensi GPS Guru</a></li>
+              <li><Link to="/#fitur" className="hover:text-white transition-colors">Rapor Digital Kurikulum Merdeka</Link></li>
+              <li><Link to="/#fitur" className="hover:text-white transition-colors">PPDB Online</Link></li>
+              <li><Link to="/#fitur" className="hover:text-white transition-colors">SPP Otomatis Midtrans</Link></li>
+              <li><Link to="/#fitur" className="hover:text-white transition-colors">Absensi GPS Guru</Link></li>
               <li><a href="/docs" className="hover:text-white transition-colors">Early Warning System</a></li>
             </ul>
           </div>
@@ -60,10 +61,10 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Perusahaan</h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><a href="#tentang" className="hover:text-white transition-colors">Tentang Kami</a></li>
+              <li><Link to="/#tentang" className="hover:text-white transition-colors">Tentang Kami</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Karir (We're Hiring)</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Blog & Edukasi</a></li>
-              <li><a href="#kontak" className="hover:text-white transition-colors">Hubungi Kami</a></li>
+              <li><Link to="/#kontak" className="hover:text-white transition-colors">Hubungi Kami</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</a></li>
             </ul>

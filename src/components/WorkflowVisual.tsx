@@ -78,7 +78,7 @@ export function WorkflowVisual() {
                 </div>
 
                 {/* Content */}
-                <div className={`flex-1 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 ${flow.bgColor} dark:bg-opacity-10 hover:shadow-lg transition-shadow duration-300`}>
+                <div className={`flex-1 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 ${flow.bgColor} dark:bg-slate-800/30 hover:shadow-lg transition-shadow duration-300`}>
                   <div className={`inline-flex px-3 py-1 bg-white/60 dark:bg-slate-800/60 rounded-lg text-xs font-bold uppercase tracking-wider mb-4 ${flow.textColor}`}>
                     Phase {idx + 1}
                   </div>

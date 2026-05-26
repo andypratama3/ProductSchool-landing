@@ -26,8 +26,8 @@ export function FeatureShowcase() {
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
               Tinggalkan cara manual menyalin nilai. Input nilai sekali, sistem kami akan mencetak ratusan rapor dalam hitungan menit. Telah disesuaikan dengan format Kurikulum Merdeka dan K13.
             </p>
-            <p className="text-sm text-slate-500 dark:text-slate-500 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-              <strong>Contoh untuk pemula:</strong> Bu Guru tinggal masukkan nilai ulangan harian. Sistem langsung hitung nilai akhir, predikat (A/B/C/D), dan deskripsi rapor. Di akhir semester, cukup klik "Cetak Semua", 500 rapor langsung jadi PDF dan bisa dikirim ke WhatsApp orang tua.
+<p className="text-sm text-slate-500 dark:text-slate-400 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+               <strong>Contoh untuk pemula:</strong> Bu Guru tinggal masukkan nilai ulangan harian. Sistem langsung hitung nilai akhir, predikat (A/B/C/D), dan deskripsi rapor. Di akhir semester, cukup klik "Cetak Semua", 500 rapor langsung jadi PDF dan bisa dikirim ke WhatsApp orang tua.
             </p>
             <ul className="space-y-4">
               {['Kalkulasi nilai akhir & predikat otomatis tanpa Excel', 'Ekspor massal ke berkas PDF print-ready dalam hitungan menit', 'Distribusi langsung ke WhatsApp orang tua masing-masing', 'Tanda tangan digital Kepala Sekolah terintegrasi'].map((item, idx) => (
@@ -50,8 +50,8 @@ export function FeatureShowcase() {
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
               Monitoring tunggakan secara real-time. Sistem akan mengirim invoice SPP bulanan ke WhatsApp orang tua secara presisi pada tanggal yang ditentukan, langsung dengan link pembayaran.
             </p>
-            <p className="text-sm text-slate-500 dark:text-slate-500 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-              <strong>Contoh untuk pemula:</strong> Setiap tanggal 1, tagihan SPP otomatis terkirim ke WhatsApp orang tua. Orang tua cukup klik "Bayar Sekarang" — bisa pakai GoPay, QRIS, atau transfer. Begitu bayar, status langsung berubah jadi "LUNAS". Tidak perlu lagi orang tua datang ke sekolah atau Bendahara mereka-reka pembukuan.
+<p className="text-sm text-slate-500 dark:text-slate-400 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+               <strong>Contoh untuk pemula:</strong> Setiap tanggal 1, tagihan SPP otomatis terkirim ke WhatsApp orang tua. Orang tua cukup klik "Bayar Sekarang" — bisa pakai GoPay, QRIS, atau transfer. Begitu bayar, status langsung berubah jadi "LUNAS". Tidak perlu lagi orang tua datang ke sekolah atau Bendahara mereka-reka pembukuan.
             </p>
             <ul className="space-y-4">
               {['Auto-reminder via pesan WhatsApp H-7, H-3, dan jatuh tempo', 'Integrasi Midtrans (Virtual Account, GoPay, QRIS)', 'Rekonsiliasi transaksi otomatis 24/7 tanpa admin', 'Laporan arus kas & analitik keuangan sekolah real-time'].map((item, idx) => (

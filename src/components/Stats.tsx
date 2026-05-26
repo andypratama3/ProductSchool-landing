@@ -6,7 +6,7 @@ export function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
           <div>
-            <div className="text-4xl font-extrabold text-white">500+</div>
+            <div className="text-4xl font-extrabold text-white">200+</div>
             <div className="mt-2 text-[10px] font-bold text-blue-200 uppercase tracking-widest">Sekolah Aktif</div>
           </div>
           <div>

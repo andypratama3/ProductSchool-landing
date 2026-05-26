@@ -7,7 +7,7 @@ interface CTAProps {
 export function CTA({ onOpenDemo }: CTAProps) {
   return (
     <section className="py-24 bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,1) 10px, rgba(255,255,255,1) 11px)'}}></div>
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply opacity-50 blur-3xl"></div>
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply opacity-50 blur-3xl"></div>
       

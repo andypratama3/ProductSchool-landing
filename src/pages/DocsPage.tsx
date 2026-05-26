@@ -276,7 +276,7 @@ function TreeItem({ data, depth = 0, isLast = false, continuing = [] }: { data: 
             <div className={`absolute left-3 top-0 w-3 h-4 border-b-2 border-l-2 border-slate-300 dark:border-slate-600 rounded-bl-lg ${isLast ? '' : ''}`} />
           )}
           {!isLast && depth > 0 && (
-            <div className="absolute left-3 top-4 bottom-0 w-px bg-slate-300 dark:border-slate-600" />
+            <div className="absolute left-3 top-4 bottom-0 w-px bg-slate-300 dark:bg-slate-600" />
           )}
         </div>
         <div className="flex items-center gap-2.5 py-1.5 min-h-8 flex-1">

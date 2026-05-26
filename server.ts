@@ -1,6 +1,5 @@
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
-import { Resend } from 'resend';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -11,13 +10,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Initialize Resend
-// Note: You must set RESEND_API_KEY in your .env file
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
+const resendApiKey = process.env.RESEND_API_KEY;
+if (resendApiKey) {
+  var { Resend } = await import('resend');
+  var resend = new Resend(resendApiKey);
+}
 
 app.post('/api/request-demo', async (req, res) => {
   try {
     const { name, school, email, phone, participants } = req.body;
+    
+    if (!resend) {
+      return res.status(200).json({ success: true, note: 'Email service not configured. Set RESEND_API_KEY in .env to enable email sending.' });
+    }
     
     const notificationEmail = process.env.NOTIFICATION_EMAIL || 'delivered@resend.dev';
     

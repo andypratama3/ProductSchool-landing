@@ -80,7 +80,7 @@ export function BentoFeatures() {
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-sm mb-4">
                   Wali murid cukup ketik "info bayar" atau "rapor" ke nomor ofisial sekolah. Bot otomatis mengambil data dari sistem dan merespons dalam hitungan detik. Menghemat waktu admin melayani chat.
                 </p>
-                <p className="text-slate-500 dark:text-slate-500 text-xs leading-relaxed bg-slate-100 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+                <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed bg-slate-100 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
                   <strong>Penjelasan untuk pemula:</strong> Bayangkan asisten yang tidak pernah tidur, bisa menjawab chat orang tua kapan saja — bahkan tengah malam. Orang tua tinggal kirim pesan "cek nilai" atau "tagihan", jawaban langsung muncul tanpa harus menunggu admin sekolah.
                 </p>
               </div>

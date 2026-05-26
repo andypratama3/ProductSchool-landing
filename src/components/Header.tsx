@@ -94,7 +94,7 @@ export function Header({ onOpenDemo }: HeaderProps) {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg focus:outline-none transition-colors"
+              className="p-2 text-slate-600 dark:text-slate-400 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg focus:outline-none transition-colors"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -102,12 +102,12 @@ export function Header({ onOpenDemo }: HeaderProps) {
         </div>
 
         {/* Mobile Nav */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[400px] mt-2 bg-white/95 backdrop-blur-md shadow-xl border border-slate-100 rounded-2xl' : 'max-h-0 opacity-0'}`}>
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[400px] mt-2 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-xl border border-slate-100 dark:border-slate-800 rounded-2xl' : 'max-h-0 opacity-0'}`}>
           <div className="px-4 pt-4 pb-6 space-y-2 font-medium">
             <div className="mb-4">
               <button
                 onClick={() => setLanguage(language === 'id' ? 'en' : 'id')}
-                className="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-600 rounded-md hover:bg-slate-200 transition-colors uppercase tracking-widest inline-flex"
+                className="text-xs font-bold px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors uppercase tracking-widest inline-flex"
               >
                 Switch to {language === 'id' ? 'English' : 'Bahasa Indonesia'}
               </button>
@@ -119,16 +119,16 @@ export function Header({ onOpenDemo }: HeaderProps) {
                   key={link.path} 
                   to={link.path} 
                   onClick={() => setIsMobileMenuOpen(false)} 
-                  className={`block px-4 py-3 text-base rounded-xl transition-all ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-slate-700 hover:text-primary hover:bg-slate-50'}`}
+                  className={`block px-4 py-3 text-base rounded-xl transition-all ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800'}`}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <div className="mt-6 flex flex-col gap-3 pt-4 border-t border-slate-100">
+            <div className="mt-6 flex flex-col gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => { setIsMobileMenuOpen(false); onOpenDemo(); }}
-                className="w-full justify-center px-4 py-3 text-sm font-bold border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-50 transition-colors"
+                className="w-full justify-center px-4 py-3 text-sm font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 {t('btn.try_free')}
               </button>
