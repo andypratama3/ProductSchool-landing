@@ -4,6 +4,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { HomePage } from './pages/HomePage';
 import { DocsPage } from './pages/DocsPage';
+import { ComponentDocs } from './pages/ComponentDocs';
 import { ScrollToHash } from './components/ScrollToHash';
 // import SplashCursor from './components/reactbits/SplashCursor';
 
@@ -16,7 +17,8 @@ export default function App() {
           <ScrollToHash />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/docs/*" element={<DocsPage />} />
+            <Route path="/docs" element={<DocsPage />} />
+            <Route path="/docs/components" element={<ComponentDocs />} />
           </Routes>
         </BrowserRouter>
       </LanguageProvider>

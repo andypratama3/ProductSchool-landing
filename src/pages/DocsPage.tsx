@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { BookOpen, ChevronRight, CheckCircle2, LayoutTemplate, MapPin, Calculator, CalendarDays, BarChart4, Bot, ShieldCheck, CreditCard, Users, Layout } from 'lucide-react';
+import { BookOpen, ChevronRight, CheckCircle2, LayoutTemplate, MapPin, Calculator, CalendarDays, BarChart4, Bot, ShieldCheck, CreditCard, Users, Layout, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -82,6 +83,32 @@ export function DocsPage() {
             Mencakup segala kebutuhan dari Penerimaan Siswa Baru hingga Slip Gaji Guru dan Rapor Kurikulum Merdeka.
           </p>
         </div>
+
+        {/* Component Library Card */}
+        <Link to="/docs/components">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-blue-500/10 dark:to-emerald-500/10 rounded-3xl p-6 sm:p-8 border border-primary/20 dark:border-blue-500/20 mb-10 hover:shadow-xl transition-all group cursor-pointer"
+          >
+            <div className="flex items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 text-primary dark:text-blue-400 flex items-center justify-center shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+                <Sparkles className="w-8 h-8" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">React Bits Components</h2>
+                  <ChevronRight className="w-5 h-5 text-primary dark:text-blue-400 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Dokumentasi interaktif untuk 4 komponen React Bits yang dipakai di landing page — 
+                  Aurora, SplashCursor, SpotlightCard, dan BlurText. Lengkap dengan preview langsung, 
+                  tabel props, dan contoh kode.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Modules List */}
         <div className="space-y-8">
