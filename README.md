@@ -1,20 +1,40 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# ProductSchool Landing Page
 
-# Run and deploy your AI Studio app
+Landing page untuk ProductSchool — Sistem Manajemen Sekolah Online #1 di Indonesia.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/e269d2cc-b4a1-448a-88cc-1cecd0f67db1
+- **Framework:** React 19 + TypeScript
+- **Build tool:** Vite 6
+- **Styling:** Tailwind CSS v4
+- **Animation:** Motion (Framer Motion)
+- **Icons:** Lucide React
+- **Routing:** React Router v7
+- **Server:** Express + tsx
 
-## Run Locally
+## Fitur Halaman
 
-**Prerequisites:**  Node.js
+- Hero section dengan Aurora background
+- Bento grid fitur unggulan (EWS, WhatsApp Bot, Payroll, dll)
+- Feature showcase dengan detail fitur
+- Workflow visual interaktif
+- Integrasi pihak ketiga (Midtrans, Konva, dll)
+- Pricing cards
+- Testimonial carousel
+- FAQ dengan akses pencarian
+- Dark mode support
+- Multi-language (ID/EN)
+- Form booking demo
 
+## Development
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```

@@ -1,26 +1,30 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import BlurText from './reactbits/BlurText';
 
 const integrations = [
   { name: 'WhatsApp', role: 'Official API', logo: 'https://cdn.simpleicons.org/whatsapp/25D366' },
-  { name: 'Midtrans', role: 'Payment Gateway', logo: 'https://avatars.githubusercontent.com/u/10103746?v=4' },
-  { name: 'Konva', role: 'Editor Template', logo: 'https://avatars.githubusercontent.com/u/13884839?v=4' },
+  { name: 'Midtrans', role: 'Payment Gateway', logo: 'https://midtrans.com/images/logo-midtrans.svg' },
+  { name: 'Konva', role: 'Canvas Editor', logo: 'https://konvajs.org/img/konva-logo.svg' },
   { name: 'Laravel', role: 'Core Engine', logo: 'https://cdn.simpleicons.org/laravel/FF2D20' },
   { name: 'Redis', role: 'Queue & Cache', logo: 'https://cdn.simpleicons.org/redis/DC382D' },
-  { name: 'AWS S3', role: 'Cloud Storage', logo: 'https://cdn.simpleicons.org/amazons3/569A31' },
 ];
-
 export function Integrations() {
   return (
     <section className="py-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/50 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white md:text-4xl tracking-tight">Infrastruktur & Integrasi Kelas Enterprise</h2>
+          <BlurText
+            text="Infrastruktur & Integrasi Kelas Enterprise"
+            className="text-3xl font-extrabold text-slate-900 dark:text-white md:text-4xl tracking-tight justify-center"
+            delay={150}
+            direction="top"
+          />
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-            ProductSchool menggunakan arsitektur modern (WebSocket Real-Time, Redis, AWS S3) dan terhubung mulus dengan layanan eksternal yang Anda butuhkan.
+            ProductSchool menggunakan arsitektur modern (WebSocket Real-Time, Redis, Laravel) dan terhubung mulus dengan layanan eksternal yang Anda butuhkan.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {integrations.map((app) => (
             <motion.div 
               key={app.name}

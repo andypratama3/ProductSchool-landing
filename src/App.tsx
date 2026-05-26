@@ -5,11 +5,13 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { HomePage } from './pages/HomePage';
 import { DocsPage } from './pages/DocsPage';
 import { ScrollToHash } from './components/ScrollToHash';
+// import SplashCursor from './components/reactbits/SplashCursor';
 
 export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
+        {/* <SplashCursor /> */}
         <BrowserRouter>
           <ScrollToHash />
           <Routes>

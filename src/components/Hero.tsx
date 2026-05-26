@@ -2,6 +2,7 @@ import React from 'react';
 import { PlayCircle, ArrowRight, CheckCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Aurora from './reactbits/Aurora';
 
 interface HeroProps {
   onOpenDemo: () => void;
@@ -12,6 +13,12 @@ export function Hero({ onOpenDemo }: HeroProps) {
 
   return (
     <section className="pt-32 pb-20 bg-slate-50 dark:bg-slate-950 overflow-hidden relative transition-colors duration-500">
+      <Aurora
+        colorStops={["#0ea5e9", "#10b981", "#6366f1", "#0ea5e9"]}
+        speed={3}
+        blur={80}
+        className="opacity-30 dark:opacity-20"
+      />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 dark:bg-primary/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

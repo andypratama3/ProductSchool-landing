@@ -1,6 +1,8 @@
 import React from 'react';
 import { FileText, Users, CreditCard, MessageCircle, CalendarDays, BarChart4, ShieldCheck, LayoutTemplate, Calculator, BookOpen, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
+import SpotlightCard from './reactbits/SpotlightCard';
+import BlurText from './reactbits/BlurText';
 
 const features = [
   {
@@ -64,7 +66,12 @@ export function Features() {
     <section className="py-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/50 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white md:text-4xl tracking-tight">9 Fitur Unggulan ProductSchool</h2>
+          <BlurText
+            text="9 Fitur Unggulan ProductSchool"
+            className="text-3xl font-extrabold text-slate-900 dark:text-white md:text-4xl tracking-tight justify-center"
+            delay={150}
+            direction="top"
+          />
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
             Dari PPDB hingga penggajian guru — semua dalam satu sistem yang terintegrasi.
           </p>
@@ -72,23 +79,26 @@ export function Features() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <motion.div 
+            <motion.div
               key={feature.name}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 hover:shadow-lg dark:hover:shadow-blue-500/5 transition-all duration-300 flex flex-col"
             >
-              <div className="w-10 h-10 inline-flex items-center justify-center rounded-lg bg-blue-100/50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 mb-4">
-                <feature.icon className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-2">{feature.name}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                {feature.description}
-              </p>
-              <div className="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700">
-                <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed italic">
-                  <span className="not-italic font-semibold">Tips:</span> {feature.forBeginners}
+              <SpotlightCard spotlightColor="rgba(14, 165, 233, 0.15)"
+                className="rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 hover:shadow-lg dark:hover:shadow-blue-500/5 transition-all duration-300 flex flex-col p-6"
+              >
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-lg bg-blue-100/50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 mb-4">
+                  <feature.icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-2">{feature.name}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  {feature.description}
                 </p>
-              </div>
+                <div className="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700">
+                  <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed italic">
+                    <span className="not-italic font-semibold">Tips:</span> {feature.forBeginners}
+                  </p>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
