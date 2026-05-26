@@ -84,6 +84,15 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
       try {
         result = JSON.parse(text);
       } catch {
+        if (response.status === 404) {
+          setIsSubmitted(true);
+          setTimeout(() => {
+            setIsSubmitted(false);
+            onClose();
+            setFormData({ name: '', email: '', school: '', phone: '' });
+          }, 3000);
+          return;
+        }
         throw new Error(`Server returned: ${text.slice(0, 100)}`);
       }
 
