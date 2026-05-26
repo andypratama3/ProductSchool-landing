@@ -71,33 +71,21 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
     setFormError(null);
     
     try {
-      const response = await fetch('/api/request-demo', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: '5167ea48-b042-4692-a75d-da8d55d1eaac',
+          ...formData,
+        }),
       });
 
-      const text = await response.text();
-      let result;
-      try {
-        result = JSON.parse(text);
-      } catch {
-        if (response.status === 404) {
-          setIsSubmitted(true);
-          setTimeout(() => {
-            setIsSubmitted(false);
-            onClose();
-            setFormData({ name: '', email: '', school: '', phone: '' });
-          }, 3000);
-          return;
-        }
-        throw new Error(`Server returned: ${text.slice(0, 100)}`);
-      }
+      const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Failed to send request');
+        throw new Error(result.message || 'Failed to send request');
       }
 
       setIsSubmitted(true);
