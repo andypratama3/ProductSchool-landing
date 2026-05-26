@@ -29,6 +29,293 @@ interface DocModule {
   content: ModuleContent;
 }
 
+interface TreeNodeData {
+  label: string;
+  desc?: string;
+  icon?: any;
+  color?: string;
+  children?: TreeNodeData[];
+}
+
+const appTree: TreeNodeData = {
+  label: 'ProductSchool',
+  desc: 'Aplikasi Manajemen Sekolah All-in-One',
+  icon: BookOpen,
+  color: 'text-primary',
+  children: [
+    {
+      label: 'PPDB & Data Siswa',
+      icon: Users,
+      color: 'text-blue-500',
+      children: [
+        { label: 'PPDB Online', desc: 'Formulir online, upload dokumen, review, approve/tolak, jalur prestasi & afirmasi' },
+        { label: 'Data Siswa', desc: 'NISN, NIK, alamat, agama, orang tua, pekerjaan, penghasilan, foto' },
+        { label: 'Import Excel & Dapodik', desc: 'Import massal dari Excel atau database Dapodik, progress bar real-time' },
+        { label: 'Pembagian Kelas', desc: 'Bagi ke kelas otomatis per jurusan & tingkat, drag-drop mutasi' },
+        { label: 'Kenaikan Kelas', desc: 'Promotion per tahun ajaran, approval dulu sebelum eksekusi' },
+        { label: 'Mutasi & Transfer', desc: 'Pindah masuk/keluar sekolah, alasan, asal/tujuan tercatat' },
+        { label: 'Retensi Siswa', desc: 'Tinggal kelas, alasan akademik & non-akademik' },
+        { label: 'Kelulusan & Ijazah', desc: 'Parameter nilai & kriteria, cetak ijazah digital, data alumni' },
+        { label: 'Prestasi Siswa', desc: 'Prestasi akademik & non-akademik, foto sertifikat' },
+      ]
+    },
+    {
+      label: 'Akademik & Kurikulum',
+      icon: CalendarDays,
+      color: 'text-violet-500',
+      children: [
+        { label: 'Tahun Ajaran', desc: 'Periode aktif, buka/tutup, auto-sesuai data' },
+        { label: 'Kalender Akademik', desc: 'Hari pertama, UTS, UAS, libur, export iCal' },
+        { label: 'Event Akademik', desc: 'Seminar, workshop, class meeting, atur tanggal, jam, tempat' },
+        { label: 'Mata Pelajaran', desc: 'Kode, nama, jurusan, kelas, alokasi jam, guru pengajar' },
+        { label: 'Guru & Assignment', desc: 'NUPTK, bidang studi, status PNS/GTY/Honor, assign ke mapel' },
+        { label: 'Jadwal Pelajaran', desc: 'Grid interaktif, atur guru/ruang/jam, cegah bentrok' },
+        { label: 'Ekstrakurikuler', desc: 'Pramuka, paskibra, olahraga, seni, PMR, rohis, nilai masuk rapor' },
+        { label: 'Learning Path', desc: 'Jurusan IPA/IPS/Bahasa, peminatan, kurikulum Merdeka' },
+      ]
+    },
+    {
+      label: 'Nilai & Rapor Digital',
+      icon: BarChart4,
+      color: 'text-amber-500',
+      children: [
+        { label: 'Bobot Komponen Nilai', desc: 'Bobot harian/UTS/UAS per mapel, beda per jenjang' },
+        { label: 'Input Nilai', desc: 'Nilai harian/UTS/UAS per siswa, input satu kelas sekaligus' },
+        { label: 'Posting Nilai', desc: 'Finalisasi, tidak bisa diubah tanpa izin admin' },
+        { label: 'Penilaian P5', desc: '6 dimensi: Beriman, Berkebinekaan, Gotong Royong, Mandiri, Bernalar Kritis, Kreatif' },
+        { label: 'Catatan Rapor AI', desc: 'Anthropic Claude / DeepSeek, generate otomatis, review & approve' },
+        { label: 'Template Prompt', desc: 'Atur gaya bahasa, panjang, fokus untuk AI narasi' },
+        { label: 'Cetak Rapor Massal', desc: 'PDF seluruh kelas sekali klik, link expired 7 hari' },
+        { label: 'Distribusi via WA', desc: 'PDF ke WA orang tua, status sent/delivered/read/failed, retry otomatis' },
+        { label: 'Tracking Distribusi', desc: 'Pantau status per siswa, pending → processing → sent → delivered → read' },
+        { label: 'Early Warning System', desc: 'Deteksi siswa berisiko: absen, nilai turun, tunggakan, notifikasi wali kelas' },
+        { label: 'Analisis Grafik', desc: 'Tren nilai, peer benchmark, perbandingan kelas, per semester' },
+        { label: 'Export Excel', desc: 'Nilai ke Excel untuk dinas, akreditasi, rapat' },
+      ]
+    },
+    {
+      label: 'Absensi & Penggajian',
+      icon: Calculator,
+      color: 'text-rose-500',
+      children: [
+        { label: 'Absensi GPS + Selfie', desc: 'Check-in/out dari HP, selfie + GPS, radius KML, anti-titip absen' },
+        { label: 'Rekap Absensi', desc: 'Bulanan otomatis: hadir, sakit, izin, alpha, terlambat, export Excel' },
+        { label: 'Geofencing KML', desc: 'Upload peta area, absen cuma bisa di dalam area' },
+        { label: 'Cuti & Izin Online', desc: 'Cuti tahunan/sakit/izin, approval atasan, kuota otomatis' },
+        { label: 'Jam Kerja & Shift', desc: 'Jam masuk/pulang, shift piket pagi/siang/malam, hitung lembur' },
+        { label: 'Komponen Gaji', desc: 'Pokok, sertifikasi, fungsional, struktural, pendidikan, BPJS, PPh 21' },
+        { label: 'Grade Gaji', desc: 'Grade per golongan, masa kerja, kualifikasi, naik otomatis' },
+        { label: 'Hitung Gaji Otomatis', desc: 'Berdasarkan absensi + komponen + grade, potong otomatis' },
+        { label: 'Penyesuaian Gaji', desc: 'Bonus, denda, lembur, pinjaman per bulan' },
+        { label: 'Slip Gaji WA', desc: 'PDF slip gaji ke WA masing-masing guru tiap bulan' },
+        { label: 'Audit Penggajian', desc: 'Siapa ubah, dari/ke berapa, kapan, dari perangkat apa' },
+        { label: 'BPJS & PPh 21', desc: 'BPJS Kesehatan 4%+1%, Ketenagakerjaan, PPh 21 PTKP' },
+      ]
+    },
+    {
+      label: 'Keuangan & Pembayaran SPP',
+      icon: CreditCard,
+      color: 'text-emerald-500',
+      children: [
+        { label: 'Tagihan Otomatis', desc: 'SPP, DSP, uang gedung, LKS, PKL, daftar ulang, tagihan ad-hoc' },
+        { label: 'Midtrans Payment', desc: 'VA (BCA/Mandiri/BNI/BRI/BTN/CIMB), QRIS, GoPay, OVO, DANA, Indomaret, Alfamart, Kredivo, Akulaku, Kartu Kredit' },
+        { label: 'Webhook Midtrans', desc: 'Status bayar real-time via webhook, auto-update' },
+        { label: 'Pengingat WA', desc: 'H-7, H-3, H-0 otomatis via WhatsApp' },
+        { label: 'Tunggakan', desc: 'Per siswa, per kelas, per angkatan, filter lunas/belum' },
+        { label: 'Laporan Keuangan', desc: 'Arus kas, rekap per tagihan, grafik, export Excel' },
+        { label: 'Refund', desc: 'Kembalikan dana via Midtrans, tercatat' },
+        { label: 'Riwayat Bayar', desc: 'History per siswa dari awal, cetak kwitansi ulang' },
+      ]
+    },
+    {
+      label: 'Editor Dokumen & Template',
+      icon: LayoutTemplate,
+      color: 'text-cyan-500',
+      children: [
+        { label: 'Canvas Visual', desc: 'Drag-drop editor, zoom, pan, grid, snap, mirip Canva' },
+        { label: '13 Elemen', desc: 'Teks, Rectangle, Ellipse, Line, Arrow, Table, Image, QR, Barcode, Icon, Signature, Shape, Group' },
+        { label: '8 Panel Properti', desc: 'General, Transform, Appearance, Text, Table Structure, Table Cell, Merge, QR' },
+        { label: '17 Shortcut', desc: 'Ctrl+Z, Ctrl+Shift+Z, Ctrl+S, Ctrl+D, Ctrl+C/X/V, Ctrl+A, Ctrl+G, Ctrl+L, Ctrl+H, Ctrl+=, Ctrl+-, panah' },
+        { label: 'Variabel DB', desc: '{{student.name}}, {{nisn}}, {{class}}, {{date}}, {{teacher.name}}' },
+        { label: 'AI Layout', desc: 'Pilih jenis dokumen, AI saran layout' },
+        { label: 'AI Variabel', desc: 'Tanya variabel yang tersedia sesuai dokumen' },
+        { label: '10 Template Siap Pakai', desc: 'Surat kelakuan baik, aktif siswa, izin, rekomendasi, piagam, lulus, rapor, kehadiran, kartu pelajar, sertifikat' },
+        { label: 'Approval Workflow', desc: 'Draft → submitted → approved/rejected, notifikasi tiap tahap' },
+        { label: 'Cetak Massal', desc: '500+ PDF, background job, progress bar' },
+        { label: 'Batch Export', desc: 'Tracking per item: pending, processing, completed, failed' },
+        { label: 'Auto-Save', desc: 'Otomatis simpan, conflict detection' },
+      ]
+    },
+    {
+      label: 'Tugas & Proyek',
+      icon: FileCheck,
+      color: 'text-orange-500',
+      children: [
+        { label: 'Kategori', desc: 'Akademik, Akreditasi, Kesiswaan, Sarpras, Humas, Keuangan, P5' },
+        { label: 'Prioritas & Status', desc: 'Tinggi/normal/rendah, pending/in_progress/completed/blocked/archived' },
+        { label: 'Penanggung Jawab', desc: 'Assignee, anggota tim, filter tugas saya/tim' },
+        { label: 'Timesheet', desc: 'Start/stop timer, total jam per tugas/orang/proyek' },
+        { label: 'Komentar', desc: 'Diskusi per tugas, tag rekan, upload file' },
+        { label: 'Ketergantungan', desc: 'Tugas A harus selesai sebelum B mulai' },
+        { label: 'Tugas Terlambat', desc: 'Auto-tandai lewat tenggat, notifikasi' },
+        { label: 'Filter & Cari', desc: 'Filter by kategori, status, prioritas, assignee' },
+        { label: 'Arsip', desc: 'Selesai → arsip otomatis, riwayat tetap ada' },
+      ]
+    },
+    {
+      label: 'WhatsApp & Komunikasi',
+      icon: Bot,
+      color: 'text-green-500',
+      children: [
+        { label: 'Bot WA 24 Jam', desc: 'Otomatis jawab cek nilai, tagihan, absen, jadwal dari chat' },
+        { label: 'Admin Router', desc: 'Chat lanjut ke admin kalau bot tidak bisa jawab' },
+        { label: 'Template WA', desc: 'Meta v24.0, template resmi: pengumuman, tagihan, rapor, undangan' },
+        { label: 'Notifikasi Massal', desc: 'Tagihan, rapor, jadwal ujian — otomatis ke WA, log tercatat' },
+        { label: 'Notifikasi Email', desc: 'Pembayaran, PPDB, cuti, rapor, jadwal, absen, welcome' },
+        { label: 'Riwayat Chat', desc: 'Semua percakapan dengan orang tua tersimpan' },
+        { label: 'Chat Internal', desc: 'Chat antar guru/staf, terpisah dari WA pribadi' },
+        { label: 'Preferensi Notif', desc: 'Atur notifikasi yang diterima dan lewat mana' },
+      ]
+    },
+    {
+      label: 'Website Sekolah & CMS',
+      icon: Globe,
+      color: 'text-sky-500',
+      children: [
+        { label: 'Artikel & Berita', desc: 'Tulis, kategori, tags, foto sampul, jadwal publish' },
+        { label: 'Kategori Konten', desc: 'Prestasi, Kegiatan, Pengumuman, Artikel Edukasi' },
+        { label: 'Galeri Prestasi', desc: 'Foto, deskripsi, tahun, filter, portofolio sekolah' },
+        { label: 'Banner Slider', desc: 'CTA button, jadwal tayang' },
+        { label: 'Hero Section', desc: 'Gambar latar, judul besar, deskripsi' },
+        { label: 'Halaman Profil', desc: 'Visi misi, kontak, sambutan KS, sejarah, fasilitas' },
+        { label: 'Mitra & Kerjasama', desc: 'Institusi, perusahaan, universitas, logo' },
+      ]
+    },
+    {
+      label: 'Dashboard Admin & Pengguna',
+      icon: Monitor,
+      color: 'text-indigo-500',
+      children: [
+        { label: 'Sidebar Navigasi', desc: 'Menu per peran: Dashboard, Artikel, Siswa, Absensi, Nilai, Pembayaran' },
+        { label: 'DataTable Interaktif', desc: 'Sort, filter, search, centang massal, export Excel' },
+        { label: 'Pencarian Global', desc: 'Cari di seluruh database, hasil instan' },
+        { label: 'Peta Absensi', desc: 'Titik GPS guru di peta, polygon radius sekolah' },
+        { label: 'Grafik Analitik', desc: 'Nilai, SPP, absensi, peer benchmark, tren' },
+        { label: 'Manajemen User', desc: 'Tambah, edit, nonaktifkan, reset password, last login' },
+        { label: 'Role & Permission', desc: '6 level: Super Admin, KS, Guru, TU, Bendahara, Wali Murid. 25+ policy' },
+        { label: 'Filter & Aksi Massal', desc: 'Centang banyak, export/hapus/ubah status' },
+        { label: 'Notifikasi Real-time', desc: 'WebSocket, muncul tanpa refresh' },
+        { label: 'Dark Mode', desc: 'Terang/gelap, ganti kapan saja' },
+        { label: 'Mobile Responsive', desc: 'Akses dari HP, layout otomatis menyesuaikan' },
+      ]
+    },
+    {
+      label: 'Keamanan & Infrastruktur',
+      icon: ShieldCheck,
+      color: 'text-red-500',
+      children: [
+        { label: 'Multi-Sekolah', desc: 'Satu instalasi, data terisolasi, paket Free/Basic/Pro/Enterprise' },
+        { label: 'RBAC Spatie', desc: '6 level, 25+ policy spesifik per fitur' },
+        { label: '2FA Google Auth', desc: 'Kode rahasia dari Google Authenticator' },
+        { label: 'Audit Log', desc: 'Siapa, apa, dari/ke, jam, IP, perangkat' },
+        { label: 'Sensitive Log', desc: 'Akses data sensitif dicatat khusus' },
+        { label: 'CCTV Live', desc: 'Integrasi kamera, lihat dari dashboard' },
+        { label: 'Geofencing KML', desc: 'Peta area, presesi cuma di dalam area' },
+        { label: 'Background Jobs', desc: 'Prioritas tinggi/normal/rendah, queue terpisah' },
+        { label: 'Sentry Monitoring', desc: 'Error 24/7, performa SQL, Redis, queue' },
+        { label: 'User Status', desc: 'Aktif/nonaktif, aman kalau guru keluar' },
+        { label: 'Cache Manager', desc: 'Caching, bersihkan per modul' },
+      ]
+    },
+    {
+      label: 'Integrasi & API',
+      icon: Workflow,
+      color: 'text-teal-500',
+      children: [
+        { label: 'Dapodik', desc: 'Import dari database Kemendikbud' },
+        { label: 'Export Excel', desc: '10+ jenis: siswa, guru, nilai, absen, bayar, mapel, kelas' },
+        { label: 'Kalender iCal', desc: 'Subscribe Google/Apple/Outlook Calendar' },
+        { label: 'REST API', desc: 'Sanctum token, endpoint siswa, guru, nilai, absen, bayar' },
+        { label: 'WebSocket', desc: '17+ channel: update real-time semua modul' },
+        { label: 'Webhook Midtrans', desc: 'Auto-konfirmasi pembayaran' },
+        { label: 'Webhook WA', desc: 'Terima chat orang tua' },
+      ]
+    },
+    {
+      label: 'Konfigurasi Sistem',
+      icon: Sliders,
+      color: 'text-gray-500',
+      children: [
+        { label: 'Feature Toggles', desc: 'Aktif/nonaktif: P5, early warning, payroll, AI narasi' },
+        { label: 'Prioritas Fitur', desc: 'Tinggi/normal/rendah, proses prioritas tinggi duluan' },
+        { label: 'Profile Sekolah', desc: 'Nama, alamat, telp, email, kepala sekolah' },
+        { label: 'System Config', desc: 'Atur dari dashboard, tanpa edit kode' },
+        { label: 'Akademik Config', desc: 'Tahun ajaran aktif, kurikulum, parameter naik kelas' },
+        { label: 'CCTV Manager', desc: 'Tambah kamera, link streaming, nama, lokasi' },
+      ]
+    },
+  ]
+};
+
+function TreeItem({ data, depth = 0, isLast = false, continuing = [] }: { data: TreeNodeData; depth?: number; isLast?: boolean; continuing?: boolean[] }) {
+  const Icon = data.icon;
+  const hasChildren = data.children && data.children.length > 0;
+
+  return (
+    <div>
+      <div className="flex items-start gap-0 group">
+        <div className="flex shrink-0" style={{ width: depth * 24 }}>
+          {continuing.map((show, i) => (
+            <div key={i} className="relative w-6">
+              {show && <div className="absolute left-3 top-0 bottom-0 w-px bg-slate-300 dark:bg-slate-600" />}
+            </div>
+          ))}
+        </div>
+        <div className="relative w-6 h-8 shrink-0">
+          {depth > 0 && (
+            <div className={`absolute left-3 top-0 w-3 h-4 border-b-2 border-l-2 border-slate-300 dark:border-slate-600 rounded-bl-lg ${isLast ? '' : ''}`} />
+          )}
+          {!isLast && depth > 0 && (
+            <div className="absolute left-3 top-4 bottom-0 w-px bg-slate-300 dark:border-slate-600" />
+          )}
+        </div>
+        <div className="flex items-center gap-2.5 py-1.5 min-h-8 flex-1">
+          {Icon && (
+            <div className={`w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0 ${data.color || 'text-slate-500'}`}>
+              <Icon className="w-3.5 h-3.5" />
+            </div>
+          )}
+          <div>
+            <span className={`text-sm font-semibold ${depth === 0 ? 'text-lg text-primary dark:text-blue-400' : depth === 1 ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
+              {data.label}
+            </span>
+            {data.desc && (
+              <span className="text-xs text-slate-400 dark:text-slate-500 ml-2 hidden sm:inline">{data.desc}</span>
+            )}
+          </div>
+        </div>
+      </div>
+      {hasChildren && data.children!.map((child, i) => (
+        <TreeItem
+          key={i}
+          data={child}
+          depth={depth + 1}
+          isLast={i === data.children!.length - 1}
+          continuing={[...continuing, !isLast]}
+        />
+      ))}
+    </div>
+  );
+}
+
+function AppTreeView({ data }: { data: TreeNodeData }) {
+  return (
+    <div className="bg-white dark:bg-slate-900/30 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 overflow-x-auto">
+      <TreeItem data={data} depth={0} isLast={true} continuing={[]} />
+    </div>
+  );
+}
+
 interface FlatSearchEntry {
   moduleId: string;
   moduleTitle: string;
@@ -61,6 +348,21 @@ const modules: DocModule[] = [
         'AI Anthropic Claude & DeepSeek untuk catatan rapor otomatis',
         'Integrasi Dapodik — import data siswa dari database Kemendikbud',
         'Real-time update via WebSocket — notifikasi muncul tanpa refresh'
+      ]
+    }
+  },
+  {
+    id: 'app-tree',
+    title: 'Struktur Aplikasi',
+    icon: Layout,
+    desc: 'Peta visual seluruh fitur ProductSchool — lihat bagaimana semua modul saling terhubung dalam satu ekosistem.',
+    section: 'Memulai',
+    content: {
+      overview: 'Berikut adalah struktur lengkap aplikasi ProductSchool. Diagram pohon ini menunjukkan bagaimana setiap modul saling terhubung — dari PPDB & Data Siswa hingga Konfigurasi Sistem. Gunakan peta ini untuk memahami alur kerja sekolah secara menyeluruh.',
+      highlights: [
+        'Navigasi visual: lihat hierarki fitur dari atas ke bawah',
+        'Setiap cabang mewakili satu modul dengan sub-fitur spesifik',
+        'Gunakan peta ini sebagai panduan eksplorasi modul lainnya'
       ]
     }
   },
@@ -639,9 +941,13 @@ export function DocsPage() {
                   <BookOpen className="w-4 h-4 text-primary dark:text-blue-400" />
                   Tentang Modul Ini
                 </h2>
-                {mod.content.overview.split('\n\n').map((p, i) => (
-                  <p key={i} className="text-slate-600 dark:text-slate-400 leading-relaxed mb-3 last:mb-0">{p}</p>
-                ))}
+                {mod.id === 'app-tree' ? (
+                  <AppTreeView data={appTree} />
+                ) : (
+                  mod.content.overview.split('\n\n').map((p, i) => (
+                    <p key={i} className="text-slate-600 dark:text-slate-400 leading-relaxed mb-3 last:mb-0">{p}</p>
+                  ))
+                )}
               </div>
 
               {mod.content.features && mod.content.features.length > 0 && (
