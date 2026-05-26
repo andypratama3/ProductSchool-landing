@@ -67,6 +67,10 @@ async function createServer() {
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
     });
+    // Return JSON for unmatched API routes instead of HTML
+    app.all('/api/*', (req, res) => {
+      res.status(404).json({ success: false, error: 'API endpoint not found' });
+    });
   }
 
   const port = process.env.PORT || 5173;

@@ -79,7 +79,13 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        const text = await response.text();
+        throw new Error(`Server returned: ${text.slice(0, 100)}`);
+      }
 
       if (!response.ok || !result.success) {
         throw new Error(result.error || 'Failed to send request');
