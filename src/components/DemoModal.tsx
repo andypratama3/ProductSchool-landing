@@ -79,11 +79,11 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
         body: JSON.stringify(formData),
       });
 
+      const text = await response.text();
       let result;
       try {
-        result = await response.json();
+        result = JSON.parse(text);
       } catch {
-        const text = await response.text();
         throw new Error(`Server returned: ${text.slice(0, 100)}`);
       }
 
