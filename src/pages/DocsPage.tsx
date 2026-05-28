@@ -50,7 +50,7 @@ const appTree: TreeNodeData = {
       children: [
         { label: 'PPDB Online', desc: 'Formulir online, upload dokumen, review, approve/tolak, jalur prestasi & afirmasi' },
         { label: 'Data Siswa', desc: 'NISN, NIK, alamat, agama, orang tua, pekerjaan, penghasilan, foto' },
-        { label: 'Import Excel & Dapodik', desc: 'Import massal dari Excel atau database Dapodik, progress bar real-time' },
+        { label: 'Import Excel', desc: 'Import massal dari Excel, progress bar real-time, template download' },
         { label: 'Pembagian Kelas', desc: 'Bagi ke kelas otomatis per jurusan & tingkat, drag-drop mutasi' },
         { label: 'Kenaikan Kelas', desc: 'Promotion per tahun ajaran, approval dulu sebelum eksekusi' },
         { label: 'Mutasi & Transfer', desc: 'Pindah masuk/keluar sekolah, alasan, asal/tujuan tercatat' },
@@ -69,7 +69,7 @@ const appTree: TreeNodeData = {
         { label: 'Event Akademik', desc: 'Seminar, workshop, class meeting, atur tanggal, jam, tempat' },
         { label: 'Mata Pelajaran', desc: 'Kode, nama, jurusan, kelas, alokasi jam, guru pengajar' },
         { label: 'Guru & Assignment', desc: 'NUPTK, bidang studi, status PNS/GTY/Honor, assign ke mapel' },
-        { label: 'Jadwal Pelajaran', desc: 'Grid interaktif, atur guru/ruang/jam, cegah bentrok' },
+        { label: 'Jadwal Pelajaran', desc: 'Grid interaktif, atur guru/ruang/jam, filter per kelas/guru' },
         { label: 'Ekstrakurikuler', desc: 'Pramuka, paskibra, olahraga, seni, PMR, rohis, nilai masuk rapor' },
         { label: 'Learning Path', desc: 'Jurusan IPA/IPS/Bahasa, peminatan, kurikulum Merdeka' },
       ]
@@ -101,15 +101,15 @@ const appTree: TreeNodeData = {
         { label: 'Absensi GPS + Selfie', desc: 'Check-in/out dari HP, selfie + GPS, radius KML, anti-titip absen' },
         { label: 'Rekap Absensi', desc: 'Bulanan otomatis: hadir, sakit, izin, alpha, terlambat, export Excel' },
         { label: 'Geofencing KML', desc: 'Upload peta area, absen cuma bisa di dalam area' },
-        { label: 'Cuti & Izin Online', desc: 'Cuti tahunan/sakit/izin, approval atasan, kuota otomatis' },
-        { label: 'Jam Kerja & Shift', desc: 'Jam masuk/pulang, shift piket pagi/siang/malam, hitung lembur' },
-        { label: 'Komponen Gaji', desc: 'Pokok, sertifikasi, fungsional, struktural, pendidikan, BPJS, PPh 21' },
+        { label: 'Cuti & Izin Online', desc: 'Cuti tahunan/sakit/izin, approval atasan, riwayat cuti' },
+        { label: 'Jam Kerja & Shift', desc: 'Jam masuk/pulang, shift piket pagi/siang/malam, catat keterlambatan' },
+        { label: 'Komponen Gaji', desc: 'Pokok, masa kerja, fungsional, struktural, pendidikan, keluarga' },
         { label: 'Grade Gaji', desc: 'Grade per golongan, masa kerja, kualifikasi, naik otomatis' },
         { label: 'Hitung Gaji Otomatis', desc: 'Berdasarkan absensi + komponen + grade, potong otomatis' },
-        { label: 'Penyesuaian Gaji', desc: 'Bonus, denda, lembur, pinjaman per bulan' },
+        { label: 'Penyesuaian Gaji', desc: 'Bonus dan potongan ad-hoc per bulan, riwayat tercatat' },
         { label: 'Slip Gaji WA', desc: 'PDF slip gaji ke WA masing-masing guru tiap bulan' },
         { label: 'Audit Penggajian', desc: 'Siapa ubah, dari/ke berapa, kapan, dari perangkat apa' },
-        { label: 'BPJS & PPh 21', desc: 'BPJS Kesehatan 4%+1%, Ketenagakerjaan, PPh 21 PTKP' },
+        { label: 'Komponen Khusus', desc: 'Tunjangan keluarga, penyesuaian beban mengajar, potongan ad-hoc' },
       ]
     },
     {
@@ -167,13 +167,15 @@ const appTree: TreeNodeData = {
       icon: Bot,
       color: 'text-green-500',
       children: [
-        { label: 'Bot WA 24 Jam', desc: 'Otomatis jawab cek nilai, tagihan, absen, jadwal dari chat' },
-        { label: 'Admin Router', desc: 'Chat lanjut ke admin kalau bot tidak bisa jawab' },
+        { label: 'Smart Bot NLP', desc: '16 intent bahasa alami, keyword + regex scoring, bukan hanya menu angka' },
+        { label: 'Rate Limiter', desc: 'Anti-spam 30 pesan/jam per nomor, pesan sopan jika limit tercapai' },
+        { label: 'Human Handoff', desc: 'Escalation otomatis ke admin jika bot tidak bisa jawab (confidence-based)' },
+        { label: 'Multi-Anak per HP', desc: '1 nomor HP untuk 2+ anak, bot tanya pilih yang mana' },
+        { label: 'Reminder Otomatis', desc: 'Pengingat tagihan H-3/H-1/H+1, alert absensi 3+ hari alpa' },
         { label: 'Template WA', desc: 'Meta v24.0, template resmi: pengumuman, tagihan, rapor, undangan' },
         { label: 'Notifikasi Massal', desc: 'Tagihan, rapor, jadwal ujian — otomatis ke WA, log tercatat' },
         { label: 'Notifikasi Email', desc: 'Pembayaran, PPDB, cuti, rapor, jadwal, absen, welcome' },
         { label: 'Riwayat Chat', desc: 'Semua percakapan dengan orang tua tersimpan' },
-        { label: 'Chat Internal', desc: 'Chat antar guru/staf, terpisah dari WA pribadi' },
         { label: 'Preferensi Notif', desc: 'Atur notifikasi yang diterima dan lewat mana' },
       ]
     },
@@ -205,7 +207,6 @@ const appTree: TreeNodeData = {
         { label: 'Role & Permission', desc: '6 level: Super Admin, KS, Guru, TU, Bendahara, Wali Murid. 25+ policy' },
         { label: 'Filter & Aksi Massal', desc: 'Centang banyak, export/hapus/ubah status' },
         { label: 'Notifikasi Real-time', desc: 'WebSocket, muncul tanpa refresh' },
-        { label: 'Dark Mode', desc: 'Terang/gelap, ganti kapan saja' },
         { label: 'Mobile Responsive', desc: 'Akses dari HP, layout otomatis menyesuaikan' },
       ]
     },
@@ -214,15 +215,15 @@ const appTree: TreeNodeData = {
       icon: ShieldCheck,
       color: 'text-red-500',
       children: [
-        { label: 'Multi-Sekolah', desc: 'Satu instalasi, data terisolasi, paket Free/Basic/Pro/Enterprise' },
+        { label: 'Multi-Tenant (Roadmap)', desc: 'Arsitektur siap multi-sekolah, saat ini single-tenant per instalasi' },
         { label: 'RBAC Spatie', desc: '6 level, 25+ policy spesifik per fitur' },
-        { label: '2FA Google Auth', desc: 'Kode rahasia dari Google Authenticator' },
+        { label: '2FA (Coming Soon)', desc: 'Google Authenticator — lapisan keamanan ekstra (dalam pengembangan)' },
         { label: 'Audit Log', desc: 'Siapa, apa, dari/ke, jam, IP, perangkat' },
         { label: 'Sensitive Log', desc: 'Akses data sensitif dicatat khusus' },
-        { label: 'CCTV Live', desc: 'Integrasi kamera, lihat dari dashboard' },
+        { label: 'CCTV Manager', desc: 'Manajemen data kamera — nama, link streaming, lokasi, status' },
         { label: 'Geofencing KML', desc: 'Peta area, presesi cuma di dalam area' },
         { label: 'Background Jobs', desc: 'Prioritas tinggi/normal/rendah, queue terpisah' },
-        { label: 'Sentry Monitoring', desc: 'Error 24/7, performa SQL, Redis, queue' },
+        { label: 'Sentry (Coming Soon)', desc: 'Siap integrasi Sentry untuk error monitoring & performa' },
         { label: 'User Status', desc: 'Aktif/nonaktif, aman kalau guru keluar' },
         { label: 'Cache Manager', desc: 'Caching, bersihkan per modul' },
       ]
@@ -232,11 +233,10 @@ const appTree: TreeNodeData = {
       icon: Workflow,
       color: 'text-teal-500',
       children: [
-        { label: 'Dapodik', desc: 'Import dari database Kemendikbud' },
         { label: 'Export Excel', desc: '10+ jenis: siswa, guru, nilai, absen, bayar, mapel, kelas' },
         { label: 'Kalender iCal', desc: 'Subscribe Google/Apple/Outlook Calendar' },
         { label: 'REST API', desc: 'Sanctum token, endpoint siswa, guru, nilai, absen, bayar' },
-        { label: 'WebSocket', desc: '17+ channel: update real-time semua modul' },
+        { label: 'WebSocket', desc: 'Update real-time: notifikasi, absensi, pembayaran, status tugas' },
         { label: 'Webhook Midtrans', desc: 'Auto-konfirmasi pembayaran' },
         { label: 'Webhook WA', desc: 'Terima chat orang tua' },
       ]
@@ -334,19 +334,19 @@ const modules: DocModule[] = [
     desc: 'Satu aplikasi untuk semua urusan administrasi sekolah — dari PPDB sampai rapor, dari gaji guru sampai website sekolah.',
     section: 'Memulai',
     content: {
-      overview: 'ProductSchool adalah aplikasi manajemen sekolah all-in-one. Bayangkan semua catatan dan pekerjaan administrasi sekolah dikerjakan dalam satu sistem, semuanya otomatis dan saling terhubung.\n\nPPDB online, data siswa, jadwal pelajaran, nilai, rapor Kurikulum Merdeka, absensi GPS guru, slip gaji, pembayaran SPP online, template surat, website sekolah, WhatsApp Bot, manajemen tugas, dan integrasi Dapodik — semua ada di sini. Bisa diakses dari HP, laptop, atau komputer.\n\nDibangun untuk sekolah Indonesia. Mendukung Kurikulum Merdeka dan K13. Multi-sekolah — satu instalasi bisa dipakai banyak yayasan. Setiap sekolah punya data sendiri yang terisolasi aman.',
+      overview: 'ProductSchool adalah aplikasi manajemen sekolah all-in-one. Bayangkan semua catatan dan pekerjaan administrasi sekolah dikerjakan dalam satu sistem, semuanya otomatis dan saling terhubung.\n\nPPDB online, data siswa, jadwal pelajaran, nilai, rapor Kurikulum Merdeka, absensi GPS guru, slip gaji, pembayaran SPP online, template surat, website sekolah, WhatsApp Bot NLP, dan manajemen tugas — semua ada di sini. Bisa diakses dari HP, laptop, atau komputer.\n\nDibangun untuk sekolah Indonesia. Mendukung Kurikulum Merdeka dan K13. Multi-Tenant (Roadmap) — arsitektur siap multi-sekolah, saat ini single-tenant per instalasi.',
       highlights: [
         'Satu aplikasi untuk semua modul — data siswa tidak perlu diinput ulang',
         'Bisa akses dari HP, cocok untuk guru dan staf yang mobile',
-        'Terintegrasi WhatsApp — orang tua bisa cek nilai, tagihan, dan rapor dari chat',
+        'WhatsApp Bot NLP — orang tua tanya nilai, tagihan, rapor pakai bahasa sehari-hari',
         'Pembayaran SPP online via Midtrans: VA semua bank, QRIS, GoPay, OVO, DANA, Indomaret, Alfamart',
         'Rapor digital Kurikulum Merdeka + K13, cetak ratusan PDF sekali klik',
         'Absensi GPS + selfie — guru cuma bisa absen kalau di sekolah',
-        'Gaji otomatis — hitung berdasarkan absensi, tunjangan, PPh 21, BPJS',
+        'Gaji otomatis — hitung berdasarkan absensi, komponen gaji, dan grade',
         'Template editor visual — desain rapor & surat pakai drag-drop, mirip Canva',
-        '6 level akses pengguna, 2FA Google Authenticator, audit log, CCTV, dan 25+ kebijakan akses',
+        '6 level akses pengguna, audit log, geofencing KML, dan 25+ kebijakan akses',
         'AI Anthropic Claude & DeepSeek untuk catatan rapor otomatis',
-        'Integrasi Dapodik — import data siswa dari database Kemendikbud',
+        'Import Excel dengan template — migrasi data sekolah cepat',
         'Real-time update via WebSocket — notifikasi muncul tanpa refresh'
       ]
     }
@@ -370,14 +370,14 @@ const modules: DocModule[] = [
     id: 'admissions',
     title: 'PPDB & Data Siswa',
     icon: Users,
-    desc: 'Terima siswa baru online, import dari Dapodik, kelola seluruh data kependudukan dan siklus hidup siswa.',
+    desc: 'Terima siswa baru online, import Excel, kelola seluruh data kependudukan dan siklus hidup siswa.',
     section: 'Modul Inti',
     content: {
-      overview: 'PPDB online: calon siswa daftar dari rumah, upload dokumen persyaratan, admin tinggal review dan setujui. Data langsung masuk ke database tanpa diketik ulang. Bisa juga import massal dari Excel atau Dapodik.\n\nSepanjang sekolah beroperasi, semua data siswa — NISN, alamat, orang tua, prestasi, mutasi, kenaikan kelas, retention, kelulusan — tersimpan rapi dan bisa dicari kapan saja. Sistem lacak seluruh siklus hidup siswa dari pendaftaran sampai lulus.',
+      overview: 'PPDB online: calon siswa daftar dari rumah, upload dokumen persyaratan, admin tinggal review dan setujui. Data langsung masuk ke database tanpa diketik ulang. Bisa juga import massal dari Excel dengan template yang sudah disediakan.\n\nSepanjang sekolah beroperasi, semua data siswa — NISN, alamat, orang tua, prestasi, mutasi, kenaikan kelas, retention, kelulusan — tersimpan rapi dan bisa dicari kapan saja. Sistem lacak seluruh siklus hidup siswa dari pendaftaran sampai lulus. Dilengkapi leads management untuk tracking calon siswa prospektif.',
       features: [
         { name: 'PPDB Online', desc: 'Buat formulir pendaftaran online sesuai kebutuhan sekolah. Calon siswa isi data, upload foto & dokumen dari rumah. Admin review, approve atau tolak. Kalau lolos, data langsung jadi data siswa. Ada juga jalur prestasi dan afirmasi.' },
         { name: 'Data Siswa Lengkap', desc: 'Semua data siswa: NISN, NIK, tempat/tanggal lahir, alamat, agama, nama orang tua, pekerjaan orang tua, penghasilan, no HP, foto. Cari, filter, export Excel kapan saja.' },
-        { name: 'Import Excel & Dapodik', desc: 'Awal tahun atau migrasi dari sekolah lain? Import ribuan siswa dari file Excel atau langsung dari database Dapodik Kemendikbud. Proses jalan di background, aplikasi tetap lancar. Ada progress bar real-time.' },
+        { name: 'Import Excel', desc: 'Awal tahun atau migrasi dari sekolah lain? Import ribuan siswa dari file Excel. Download template, isi data, upload. Proses di background dengan progress bar real-time dan laporan error detail.' },
         { name: 'Import Progress Real-time', desc: 'Saat import ribuan siswa, progress muncul langsung di dashboard — berapa persen selesai, berapa error, siswa mana yang gagal. Tidak perlu tebak-tebak.' },
         { name: 'Pembagian & Mutasi Kelas', desc: 'Bagi siswa ke kelas otomatis berdasarkan jurusan dan tingkat. Kalau ada siswa pindah kelas, riwayat mutasi tercatat semua — siapa yang pindah, dari kelas mana, kapan.' },
         { name: 'Kenaikan Kelas (Promotion)', desc: 'Naikkan kelas siswa otomatis per tahun ajaran. Approve dulu baru dieksekusi. Ada riwayat kenaikan kelas per siswa.' },
@@ -385,6 +385,8 @@ const modules: DocModule[] = [
         { name: 'Retensi Siswa', desc: 'Catat siswa yang tinggal kelas atau tidak naik. Lengkap dengan alasan akademik atau非 akademik. Data untuk laporan ke dinas.' },
         { name: 'Kelulusan & Ijazah', desc: 'Proses kelulusan dengan parameter nilai dan kriteria. Cetak ijazah digital. Lulusan tetap terdata sebagai alumni.' },
         { name: 'Prestasi Siswa', desc: 'Catat prestasi akademik dan non-akademik siswa. Bisa ditampilkan di website sekolah. Lengkap dengan foto sertifikat.' },
+        { name: 'Leads Management', desc: 'Tracking calon siswa prospektif — sumber informasi, status follow-up, minat jurusan, riwayat komunikasi. Konversi leads ke PPDB with one click.' },
+        { name: 'Bulk Operations', desc: 'Aksi massal untuk data siswa: export, import, hapus, ubah status kelas. Dengan template download dan progress bar real-time.' },
       ]
     }
   },
@@ -402,8 +404,8 @@ const modules: DocModule[] = [
         { name: 'Event Akademik', desc: 'Buat event seperti seminar, workshop, class meeting, perpisahan. Atur tanggal, jam, tempat, penanggung jawab. Tampil di kalender.' },
         { name: 'Mata Pelajaran', desc: 'Daftar mata pelajaran lengkap dengan kode, nama, jurusan, kelas, alokasi jam per minggu, dan guru pengajar. Bisa untuk Kurikulum Merdeka dan K13.' },
         { name: 'Guru & Assignment', desc: 'Data guru lengkap: NUPTK, bidang studi, status kepegawaian (PNS/GTY/Honor). Assignment guru ke mata pelajaran dan kelas.' },
-        { name: 'Jadwal Pelajaran', desc: 'Buat jadwal dengan tampilan grid yang mudah diatur. Atur guru, ruang, jam ke kelas. Cek jadwal per guru, per kelas, atau per hari. Cegah jadwal bentrok.' },
-        { name: 'Ekstrakurikuler', desc: 'Catat kegiatan ekskul siswa: pramuka, paskibra, olahraga, seni, PMR, rohis. Nilai ekskul masuk ke rapor sebagai bagian dari penilaian.' },
+        { name: 'Jadwal Pelajaran', desc: 'Buat jadwal dengan tampilan grid yang mudah diatur. Atur guru, ruang, jam ke kelas. Filter jadwal per guru, per kelas, atau per hari.' },
+        { name: 'Ekstrakurikuler', desc: 'Catat kegiatan ekskul siswa: pramuka, paskibra, olahraga, seni, PMR, rohis. Assign siswa ke ekskul, nilai ekskul masuk ke rapor.' },
         { name: 'Student Learning Path', desc: 'Atur jalur belajar siswa — jurusan IPA/IPS/Bahasa, peminatan, kurikulum yang diikuti. Fleksibel untuk Kurikulum Merdeka.' },
       ]
     }
@@ -429,6 +431,7 @@ const modules: DocModule[] = [
         { name: 'Early Warning System', desc: 'Sistem deteksi dini siswa berisiko — sering absen, nilai turun drastis, tunggakan SPP menumpuk. Notifikasi langsung ke wali kelas dan kepala sekolah. Bisa tindak lanjut sebelum terlambat.' },
         { name: 'Analisis Grafik Nilai', desc: 'Lihat tren nilai per kelas, per mata pelajaran, perbandingan antar semester. Bandingkan siswa dengan rata-rata kelas (peer benchmark). Semua dalam grafik.' },
         { name: 'Export Excel', desc: 'Export nilai ke Excel untuk diserahkan ke dinas pendidikan, akreditasi, atau rapat orang tua.' },
+        { name: 'Bobot & Grade Components', desc: 'Atur bobot penilaian per komponen (harian, UTS, UAS) dan per mata pelajaran. Bobot bisa berbeda per kelas dan jenjang. Sistem hitung otomatis.' },
       ]
     }
   },
@@ -439,20 +442,20 @@ const modules: DocModule[] = [
     desc: 'Absen GPS + selfie, jam kerja & shift, pengajuan cuti, hitung gaji otomatis, slip gaji ke WhatsApp.',
     section: 'Modul Inti',
     content: {
-      overview: 'Guru dan staf absen dari HP — selfie + GPS memastikan mereka benar-benar di sekolah. Atur jam kerja dan shift piket. Ajukan cuti dari aplikasi.\n\nSistem otomatis hitung gaji berdasarkan kehadiran, tunjangan sertifikasi, tunjangan fungsional/struktural, potongan PPh 21, BPJS Kesehatan & Ketenagakerjaan, dan pinjaman. Slip gaji PDF langsung terkirim ke WhatsApp masing-masing. Setiap perubahan gaji tercatat dalam audit log.',
+      overview: 'Guru dan staf absen dari HP — selfie + GPS memastikan mereka benar-benar di sekolah. Atur jam kerja dan shift piket. Ajukan cuti dari aplikasi.\n\nSistem hitung gaji berdasarkan kehadiran, komponen gaji (pokok, sertifikasi, fungsional, struktural, pendidikan, masa kerja, keluarga), dan grade. Ada penyesuaian bonus/potongan ad-hoc per bulan. Slip gaji PDF langsung terkirim ke WhatsApp masing-masing. Setiap perubahan gaji tercatat dalam audit log.',
       features: [
         { name: 'Absensi GPS + Selfie', desc: 'Check-in dan check-out dari HP. Selfie untuk verifikasi, GPS memastikan di radius sekolah yang sudah ditentukan dengan peta KML. Guru tidak bisa titip absen.' },
         { name: 'Rekap Absensi', desc: 'Rekap bulanan otomatis — hadir, sakit, izin, alpha, terlambat. Lihat per guru atau per bulan. Export Excel.' },
         { name: 'Geofencing (Peta KML)', desc: 'Admin upload peta area sekolah dalam format KML. Guru cuma bisa absen kalau HP mereka di dalam area yang sudah ditentukan. Presensi jadi akurat.' },
-        { name: 'Cuti & Izin Online', desc: 'Ajukan cuti tahunan, sakit, atau izin dari aplikasi. Atasan approve langsung. Kuota cuti tahunan otomatis terhitung. Riwayat cuti tercatat.' },
-        { name: 'Jam Kerja & Shift', desc: 'Atur jam kerja sekolah, jam masuk/pulang guru. Shift piket (pagi/siang/malam). Sistem hitung keterlambatan dan lembur otomatis.' },
-        { name: 'Komponen Gaji', desc: 'Gaji pokok, tunjangan sertifikasi, tunjangan fungsional/struktural, tunjangan pendidikan, BPJS Kesehatan & Ketenagakerjaan, PPh 21. Semua bisa diatur per guru.' },
+        { name: 'Cuti & Izin Online', desc: 'Ajukan cuti tahunan, sakit, atau izin dari aplikasi. Atasan approve langsung. Riwayat cuti tercatat dan bisa di-filter.' },
+        { name: 'Jam Kerja & Shift', desc: 'Atur jam kerja sekolah, jam masuk/pulang guru. Shift piket (pagi/siang/malam). Sistem catat keterlambatan otomatis.' },
+        { name: 'Komponen Gaji', desc: 'Gaji pokok, tunjangan masa kerja, tunjangan fungsional/struktural, tunjangan pendidikan, tunjangan keluarga. Semua bisa diatur per guru.' },
         { name: 'Grade Gaji', desc: 'Atur grade gaji berdasarkan golongan, masa kerja, dan kualifikasi. Kenaikan grade otomatis setelah masa kerja tertentu.' },
-        { name: 'Hitung Gaji Otomatis', desc: 'Setiap bulan, sistem hitung gaji berdasarkan absensi, komponen gaji, grade. Potong otomatis kalau ada kehadiran kurang atau pinjaman.' },
-        { name: 'Penyesuaian Gaji', desc: 'Tambah atau kurangi gaji untuk bulan tertentu — bonus, denda, lembur, pinjaman. Semua tercatat.' },
+        { name: 'Hitung Gaji Otomatis', desc: 'Setiap bulan, sistem hitung gaji berdasarkan absensi, komponen gaji, dan grade. Potong otomatis kalau ada kehadiran kurang atau penyesuaian.' },
+        { name: 'Penyesuaian Gaji', desc: 'Tambah atau kurangi gaji untuk bulan tertentu — bonus atau potongan ad-hoc. Semua tercatat dalam riwayat penyesuaian.' },
         { name: 'Slip Gaji ke WhatsApp', desc: 'Slip gaji PDF langsung terkirim ke WhatsApp masing-masing guru tiap bulan. Tidak perlu print dan amplop.' },
         { name: 'Audit Penggajian', desc: 'Setiap perubahan data gaji tercatat: siapa yang mengubah, dari mana jadi berapa, kapan, dari perangkat apa. Full riwayat.' },
-        { name: 'BPJS & PPh 21', desc: 'Hitung iuran BPJS Kesehatan (4% perusahaan, 1% karyawan) dan BPJS Ketenagakerjaan otomatis. Hitung PPh 21 berdasarkan PTKP dan penghasilan.' },
+        { name: 'Payroll Adjustments', desc: 'Bonus atau potongan ad-hoc per bulan untuk guru tertentu. Riwayat penyesuaian tercatat dalam audit log.' },
       ]
     }
   },
@@ -493,6 +496,7 @@ const modules: DocModule[] = [
         { name: 'AI Bantu Layout', desc: 'Pilih jenis dokumen (surat, sertifikat, rapor, kartu pelajar), AI bantu saranin layout yang pas. Tinggal pilih dan edit.' },
         { name: 'AI Bantu Variabel', desc: 'Bingung variabel apa yang tersedia? Tanya AI, dia kasih tahu variabel yang bisa dipakai sesuai jenis dokumen.' },
         { name: '10 Template Siap Pakai', desc: 'Langsung bisa pakai: surat keterangan kelakuan baik, surat aktif siswa, surat izin, surat rekomendasi, piagam penghargaan, surat lulus, rapor akademik, rekap kehadiran, kartu pelajar, sertifikat ekskul.' },
+        { name: 'Auto Numbering Dokumen', desc: 'Nomor surat otomatis dengan format kustom — kode sekolah, jenis surat, bulan, tahun. Format bisa diatur sendiri.' },
         { name: 'Template Approval', desc: 'Buat template → ajukan ke kepala sekolah → review → approve atau tolak. Hanya template yang sudah diapprove yang bisa dipakai cetak. Ada notifikasi di setiap tahap.' },
         { name: 'Cetak Massal 500+', desc: 'Pilih ratusan siswa, klik cetak, semua PDF jadi dalam beberapa menit. Proses di background — bisa sambil kerja lain. Ada progress bar.' },
         { name: 'Batch Export System', desc: 'Export ribuan dokumen dengan tracking per item. Status: pending, processing, completed, failed. Lihat detail yang gagal dan penyebabnya.' },
@@ -526,18 +530,21 @@ const modules: DocModule[] = [
     id: 'communication',
     title: 'WhatsApp & Komunikasi',
     icon: Bot,
-    desc: 'Bot WhatsApp 24 jam buat orang tua, notifikasi otomatis via WA & email, chat internal guru & staf.',
+    desc: 'Bot WhatsApp NLP 24 jam buat orang tua, notifikasi otomatis via WA & email, proactive alerts.',
     section: 'Modul Inti',
     content: {
-      overview: 'WhatsApp Bot terintegrasi penuh dengan sistem — orang tua chat ke nomor sekolah, bot langsung jawab. Cek nilai: jawab. Cek tagihan: jawab. Cek absen: jawab. Cek jadwal: jawab. Admin tidak perlu jaga chat manual.\n\nSetiap event penting — tagihan jatuh tempo, rapor terbit, pembayaran masuk, nilai diposting, jadwal berubah — otomatis terkirim via WhatsApp dan email. Ada juga chat internal antar guru yang terpisah dari WhatsApp pribadi.',
+      overview: 'WhatsApp Bot terintegrasi penuh dengan sistem — orang tua chat ke nomor sekolah, bot langsung jawab dengan NLP (Natural Language Processing). Cek nilai: jawab. Cek tagihan: jawab. Cek absen: jawab. Cek jadwal: jawab. Bot paham 16 intent bahasa alami — bukan cuma menu angka. Admin tidak perlu jaga chat manual.\n\nSetiap event penting — tagihan jatuh tempo, rapor terbit, pembayaran masuk, nilai diposting, jadwal berubah — otomatis terkirim via WhatsApp dan email. Ada proactive notifications: pengingat pembayaran H-3/H-1/H+1, alert absensi 3+ alpa.',
       features: [
-        { name: 'WhatsApp Bot 24 Jam', desc: 'Orang tua kirim chat ke nomor sekolah, bot jawab otomatis. Cek nilai, tagihan, absen, jadwal — semua dari chat. Bot paham bahasa Indonesia sehari-hari.' },
-        { name: 'Admin Router', desc: 'Kalau bot tidak bisa jawab, chat otomatis dialihkan ke admin yang sedang bertugas. Orang tua tidak perlu nunggu lama.' },
+        { name: 'WhatsApp Bot NLP 24 Jam', desc: 'Orang tua kirim chat bahasa alami, bot jawab otomatis. Cek nilai, tagihan, absen, jadwal — semua dari chat. Bot paham 16 intent: cek nilai, tagihan, info spp, jadwal, rapor, absen, infosekolah, kontak, ppdb, ekstrakurikuler, libur, mapel, guru, buku, seragam, dan lainnya. Keyword + regex scoring untuk akurasi tinggi.' },
+        { name: 'Admin Router (Human Handoff)', desc: 'Kalau bot tidak bisa jawab (confidence score rendah), chat otomatis dialihkan ke admin yang sedang bertugas. Orang tua tidak perlu nunggu lama.' },
         { name: 'Template Pesan WhatsApp', desc: 'Pesan dikirim pakai template resmi WhatsApp Business API (Meta v24.0). Profesional. Template bisa diatur sendiri: pengumuman, tagihan, rapor, undangan.' },
-        { name: 'Notifikasi Massal Otomatis', desc: 'Pengumuman sekolah, tagihan SPP, jadwal ujian, pembagian rapor — semua terkirim otomatis. Tidak ada orang tua yang ketinggalan info. Log pengiriman tercatat.' },
+        { name: 'Notifikasi Massal Otomatis', desc: 'Pengumuman sekolah, tagihan SPP, jadwal ujian, pembagian rapor — semua terkirim otomatis. Proactive notifications: pengingat pembayaran H-3/H-1/H+1, alert absensi 3+ alpa ke wali kelas. Log pengiriman tercatat.' },
         { name: 'Notifikasi Email', desc: 'Selain WA, notifikasi juga dikirim via email. Untuk: pemberitahuan pembayaran, penerimaan PPDB, keputusan cuti, rapor, jadwal, absensi, dan selamat datang siswa baru.' },
         { name: 'Riwayat Percakapan', desc: 'Semua chat dengan orang tua tersimpan rapi. Admin bisa lihat riwayat kapan saja. Cocok untuk dokumentasi komunikasi.' },
-        { name: 'Chat Internal Guru', desc: 'Chat antar guru dan staf sekolah. Terintegrasi dengan tugas dan pengumuman. Alternatif WhatsApp grup yang lebih rapi dan terarsip.' },
+        { name: 'Multi-Student per Phone', desc: 'Satu nomor HP bisa untuk 2+ anak. Bot otomatis tanya "Mau cek data siapa?" dan pilih siswa yang dimaksud.' },
+        { name: 'Rate Limiter & Anti-Spam', desc: 'Bot punya batas 30 pesan per jam per nomor untuk mencegah spam. Admin dapat pengecualian.' },
+        { name: 'Template Renderer', desc: 'Pesan WhatsApp menggunakan dynamic {variable} substitution dari database. Template bisa diatur sendiri: pengumuman, tagihan, rapor, undangan.' },
+        { name: 'Conversation Analytics', desc: 'Tracking intent frequency, response time, volume percakapan per hari/minggu. Untuk evaluasi layanan WhatsApp.' },
         { name: 'Preferensi Notifikasi', desc: 'Setiap pengguna bisa atur notifikasi apa yang mau diterima dan lewat mana (WA, email, atau in-app). Tidak diganggu yang tidak penting.' },
       ]
     }
@@ -565,7 +572,7 @@ const modules: DocModule[] = [
     id: 'admin-dashboard',
     title: 'Dashboard Admin & Manajemen Pengguna',
     icon: Monitor,
-    desc: 'Antarmuka admin lengkap — data tabel interaktif, peta absensi, grafik, pencarian global, dark mode, manajemen roles & permissions.',
+    desc: 'Antarmuka admin lengkap — data tabel interaktif, peta absensi, grafik, pencarian global, manajemen roles & permissions.',
     section: 'Modul Inti',
     content: {
       overview: 'Setelah login, admin, kepala sekolah, guru, dan staf masuk ke dashboard yang berbeda sesuai perannya. Admin bisa atur semua data. Ada tabel interaktif dengan pencarian dan filter, peta untuk lihat lokasi absensi, grafik perkembangan siswa, dan tampilan yang nyaman di mata (dark mode).\n\nSemua informasi penting muncul di halaman depan. Pencarian global — ketik apa saja, sistem cari di seluruh database. Atur pengguna, roles, dan permissions dengan 6 level akses.',
@@ -579,7 +586,6 @@ const modules: DocModule[] = [
         { name: 'Role & Permission', desc: '6 level akses: Super Admin, Kepala Sekolah, Guru, Staff TU, Bendahara, Wali Murid. Masing-masing punya hak akses berbeda yang bisa diatur.' },
         { name: 'Filter & Aksi Massal', desc: 'Filter data berdasarkan berbagai kriteria. Centang banyak item, lakukan aksi massal: export, hapus, ubah status. Hemat waktu.' },
         { name: 'Notifikasi Real-time', desc: 'Notifikasi muncul langsung tanpa refresh — pembayaran masuk, pengajuan cuti baru, siswa berisiko terdeteksi. Via WebSocket.' },
-        { name: 'Dark Mode', desc: 'Tampilan terang dan gelap. Nyaman untuk yang kerja malam atau lebih suka tema gelap. Bisa ganti kapan saja.' },
         { name: 'Mobile-responsive', desc: 'Dashboard bisa diakses dari HP. Guru lihat jadwal, input nilai, absen dari mana saja. Layout menyesuaikan layar.' },
       ]
     }
@@ -588,22 +594,23 @@ const modules: DocModule[] = [
     id: 'security',
     title: 'Keamanan & Infrastruktur',
     icon: ShieldCheck,
-    desc: 'Multi-sekolah, 6 level RBAC, 2FA, audit log, CCTV, geofencing, background jobs, Sentry, dan 25+ kebijakan akses.',
+    desc: '6 level RBAC, audit log, manajemen CCTV, geofencing, background jobs, 2FA (coming soon), Sentry (coming soon).',
     section: 'Sistem & Keamanan',
     content: {
-      overview: 'ProductSchool dibangun untuk dipakai banyak sekolah sekaligus — data masing-masing sekolah terisolasi. Akses diatur dengan 6 level RBAC (Spatie Permission). Setiap perubahan data tercatat dalam audit log. Ada login dua langkah via Google Authenticator.\n\nProses berat — cetak rapor 500 siswa, kirim WA ke 1000 orang tua, hitung gaji 50 guru — semua jalan di background dengan prioritas berbeda. Error terpantau 24/7 via Sentry. CCTV terintegrasi langsung di dashboard.',
+      overview: 'Akses diatur dengan 6 level RBAC (Spatie Permission). Setiap perubahan data tercatat dalam audit log. Multi-Tenant (Roadmap) — arsitektur siap multi-sekolah, saat ini single-tenant per instalasi.\n\nProses berat — cetak rapor 500 siswa, kirim WA ke 1000 orang tua, hitung gaji 50 guru — semua jalan di background dengan prioritas berbeda. Siap integrasi Sentry untuk error monitoring. Manajemen data CCTV terpusat di dashboard.',
       features: [
-        { name: 'Multi-Sekolah', desc: 'Satu instalasi bisa dipakai banyak sekolah. Masing-masing punya data yang terisolasi. Ada paket langganan: Free, Basic, Pro, Enterprise — beda batas siswa & pengguna.' },
+        { name: 'Multi-Tenant (Roadmap)', desc: 'Arsitektur database sudah disiapkan untuk multi-tenant (tabel subscriptions). Saat ini setiap sekolah mendapat instalasi terpisah. Fitur shared multi-sekolah dalam satu instalasi ada di roadmap.' },
         { name: '6 Level RBAC (Spatie)', desc: 'Super Admin (atur semua sekolah), Kepala Sekolah (lihat semua data), Guru (nilai & absen), Staff TU (data siswa & surat), Bendahara (pembayaran), Wali Murid (lihat nilai). 25+ kebijakan akses spesifik per fitur.' },
-        { name: '2FA Google Authenticator', desc: 'Lapisan keamanan ekstra. Selain password, butuh kode dari Google Authenticator. Data sekolah tetap aman.' },
+        { name: '2FA (Coming Soon)', desc: 'Google Authenticator sebagai lapisan keamanan ekstra. Selain password, butuh kode dari Google Authenticator. Dalam tahap pengembangan.' },
         { name: 'Audit Log', desc: 'Setiap perubahan data tercatat: siapa, apa yang diubah, dari mana jadi berapa, jam berapa, dari IP dan perangkat apa. Tidak ada yang bisa mengelak.' },
         { name: 'Sensitive Request Log', desc: 'Akses ke data sensitif (nilai, gaji, data pribadi) dicatat khusus. Untuk audit keamanan.' },
-        { name: 'CCTV Live View', desc: 'Integrasi kamera CCTV sekolah — lihat langsung dari dashboard. Monitoring keamanan dan pengawasan tanpa aplikasi terpisah.' },
+        { name: 'Manajemen CCTV', desc: 'Kelola data kamera CCTV — nama kamera, link streaming, lokasi, status. Semua terpusat di dashboard.' },
         { name: 'Geofencing KML', desc: 'Upload peta area sekolah format KML. Guru cuma bisa absen di dalam area. Presensi akurat, tidak bisa manipulasi.' },
         { name: 'Background Jobs', desc: 'Cetak rapor, kirim WA, hitung gaji, analitik — semua di background. Prioritas: rapor & AI narasi (tinggi), payroll & analitik (normal), distribusi & kalender (rendah). Aplikasi tetap cepat.' },
-        { name: 'Sentry Error Monitoring', desc: 'Aplikasi terpantau 24/7 via Sentry. Error langsung ketahuan tim developer. Performa query SQL, Redis, queue juga terpantau.' },
+        { name: 'Sentry (Coming Soon)', desc: 'Siap integrasi Sentry untuk error monitoring & performa. Saat ini error logging via internal logging system.' },
         { name: 'User Status', desc: 'Akun pengguna bisa aktif atau dinonaktifkan. Guru pindah atau keluar? Tinggal nonaktifkan akun. Data tetap aman.' },
         { name: 'Cache Management', desc: 'Sistem caching untuk akses data cepat. Admin bisa bersihkan cache per modul kalau ada data yang tidak sinkron.' },
+        { name: 'Webhook Reliability Log', desc: 'Log webhook WhatsApp untuk audit komunikasi — status, retry, error tracking. Riwayat semua pengiriman tercatat.' },
         { name: 'Paket & Masa Aktif', desc: 'Free untuk coba-coba, Basic untuk sekolah kecil, Pro untuk menengah, Enterprise untuk full fitur. Upgrade kapan saja.' },
       ]
     }
@@ -612,16 +619,16 @@ const modules: DocModule[] = [
     id: 'integration',
     title: 'Integrasi & API',
     icon: Workflow,
-    desc: 'Integrasi Dapodik, API publik untuk developer, WebSocket real-time, export Excel, kalender iCal.',
+    desc: 'REST API, WebSocket real-time, export Excel, kalender iCal, webhook Midtrans & WhatsApp.',
     section: 'Sistem & Keamanan',
     content: {
-      overview: 'ProductSchool bisa terhubung dengan sistem lain. Import data dari Dapodik Kemendikbud. Export data ke Excel untuk dinas pendidikan. Kalender akademik bisa di-export ke iCal dan muncul di HP.\n\nAda API untuk developer yang ingin integrasi dengan sistem lain. WebSocket untuk update real-time. Webhook Midtrans untuk konfirmasi pembayaran otomatis. Dan webhook WhatsApp untuk menerima pesan orang tua.',
+      overview: 'ProductSchool bisa terhubung dengan sistem lain. Export data ke Excel untuk dinas pendidikan. Import data dari Excel dengan template yang sudah disediakan. Kalender akademik bisa di-export ke iCal dan muncul di HP.\n\nAda REST API untuk developer yang ingin integrasi dengan sistem lain, dilengkapi endpoint Health Check untuk monitoring. WebSocket untuk update real-time. Webhook Midtrans untuk konfirmasi pembayaran otomatis. Webhook WhatsApp untuk menerima pesan orang tua.',
       features: [
-        { name: 'Integrasi Dapodik', desc: 'Import data siswa langsung dari database Dapodik Kemendikbud. Data NISN, alamat, orang tua — semua terisi otomatis. Tidak perlu input manual.' },
         { name: 'Export Excel', desc: 'Export data siswa, guru, nilai, absensi, pembayaran, mata pelajaran, kelas, dan tahun ajaran ke Excel. 10+ jenis export siap pakai.' },
+        { name: 'Health Check API', desc: 'Endpoint GET /api/v1/whatsapp/health untuk monitoring status sistem. Ideal untuk uptime monitoring dan alerting.' },
         { name: 'Kalender iCal', desc: 'Kalender akademik bisa di-subscribe via iCal. Muncul otomatis di Google Calendar / Apple Calendar / Outlook. Guru dan orang tua tidak perlu input manual.' },
         { name: 'API untuk Developer', desc: 'API RESTful untuk integrasi dengan sistem lain. Menggunakan token Sanctum untuk autentikasi. Tersedia endpoint untuk data siswa, guru, nilai, absensi, pembayaran.' },
-        { name: 'WebSocket Real-time', desc: 'Update muncul langsung tanpa refresh. Ada 17+ channel: update absensi, nilai, pembayaran, jadwal, cuti, notifikasi, tugas, data siswa. Penting untuk dashboard yang selalu up-to-date.' },
+        { name: 'WebSocket Real-time', desc: 'Update muncul langsung tanpa refresh — notifikasi, absensi, pembayaran, status tugas. Penting untuk dashboard yang selalu up-to-date.' },
         { name: 'Webhook Midtrans', desc: 'Konfirmasi pembayaran otomatis via webhook. Status bayar langsung terupdate tanpa admin cek manual.' },
         { name: 'Webhook WhatsApp', desc: 'Menerima pesan dari orang tua via webhook WhatsApp Business API. Chat langsung masuk ke dashboard.' },
       ]

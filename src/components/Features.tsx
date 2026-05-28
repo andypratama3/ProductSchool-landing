@@ -54,10 +54,10 @@ const features = [
     forBeginners: 'Orang tua tinggal chat WhatsApp: "nilai anak saya" atau "tagihan SPP". Jawaban langsung muncul, bahkan jam 12 malam. Seperti punya resepsionis otomatis.',
   },
   {
-    name: 'Keamanan & CCTV Integration',
-    description: 'RBAC (Role-Based Access) + Audit Log + Integrasi CCTV sekolah. Semua akses tercatat siapa, kapan, dan apa.',
+    name: 'Keamanan & Manajemen CCTV',
+    description: 'RBAC (Role-Based Access) + Audit Log + Manajemen data CCTV sekolah. Semua akses tercatat siapa, kapan, dan apa.',
     icon: ShieldCheck,
-    forBeginners: 'Setiap orang punya akses berbeda — guru lihat nilai saja, Kepsek lihat semua. CCTV sekolah bisa dipantau dari sistem. Ada yang utak-atik data? Semua tercatat.',
+    forBeginners: 'Setiap orang punya akses berbeda — guru lihat nilai saja, Kepsek lihat semua. Data CCTV sekolah terpusat di dashboard. Ada yang utak-atik data? Semua tercatat.',
   },
 ];
 

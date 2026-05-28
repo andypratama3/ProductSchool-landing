@@ -100,10 +100,10 @@ export function BentoFeatures() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Payroll & Penggajian</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-sm mb-4">
-                Hitung gaji pokok, tunjangan sertifikasi, potongan PPh 21, BPJS, hingga denda telat presensi secara otomatis. Generate slip gaji PDF dalam 1 klik.
+                Hitung gaji pokok, tunjangan sertifikasi, tunjangan fungsional, struktural, dan masa kerja secara otomatis. Generate slip gaji PDF dalam 1 klik.
               </p>
               <p className="text-slate-500 dark:text-slate-500 text-xs leading-relaxed bg-slate-100 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
-                <strong>Penjelasan untuk pemula:</strong> Tidak perlu lagi hitung manual di Excel setiap bulan. Sistem otomatis menghitung gaji guru berdasarkan kehadiran, tunjangan, dan potongan. Slip gaji langsung jadi PDF dan bisa dikirim ke WhatsApp guru. Semua urusan gaji jadi 5 menit beres.
+                <strong>Penjelasan untuk pemula:</strong> Tidak perlu lagi hitung manual di Excel setiap bulan. Sistem otomatis menghitung gaji guru berdasarkan kehadiran dan komponen gaji. Slip gaji langsung jadi PDF dan bisa dikirim ke WhatsApp guru. Semua urusan gaji jadi 5 menit beres.
               </p>
             </SpotlightCard>
           </motion.div>

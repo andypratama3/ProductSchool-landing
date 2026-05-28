@@ -65,7 +65,7 @@ export function FeatureShowcase() {
           <AnimateIn direction="left" className="mb-12 lg:mb-0 w-full">
             <figure className="relative rounded-3xl bg-slate-900 aspect-square overflow-hidden border border-slate-800 shadow-2xl group p-4 lg:p-8 transition-colors duration-500">
                <div className="w-full h-full relative rounded-2xl overflow-hidden ring-1 ring-white/10">
-                 <img src="/dashboard-mockup.png" alt="Fitur Pembayaran SPP Online ProductSchool - Midtrans QRIS dan Virtual Account" className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 filter hue-rotate-180" />
+                  <img src="/dashboard-mockup.png" alt="Fitur Pembayaran SPP Online ProductSchool - Midtrans QRIS dan Virtual Account" className="w-full h-full object-cover opacity-85 group-hover:scale-110 transition-transform duration-700 filter hue-rotate-180 saturate-150" />
                  <div className="absolute inset-0 bg-gradient-to-bl from-slate-900/60 to-transparent"></div>
                </div>
                <figcaption className="sr-only">Tampilan fitur pembayaran SPP online ProductSchool yang terintegrasi dengan Midtrans, QRIS, GoPay, dan Virtual Account.</figcaption>

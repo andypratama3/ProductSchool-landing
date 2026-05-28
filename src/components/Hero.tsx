@@ -95,7 +95,7 @@ export function Hero({ onOpenDemo }: HeroProps) {
                  <img 
                    src="/dashboard-mockup.png" 
                    alt="Dashboard ProductSchool - Sistem Informasi Manajemen Sekolah Online" 
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-110"
                    loading="eager"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none"></div>

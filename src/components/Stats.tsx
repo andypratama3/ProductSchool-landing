@@ -14,7 +14,7 @@ export function Stats() {
             <div className="mt-2 text-[10px] font-bold text-blue-200 uppercase tracking-widest">Rapor Dicetak</div>
           </div>
           <div>
-            <div className="text-4xl font-extrabold text-white">100B+</div>
+            <div className="text-4xl font-extrabold text-white">10M+</div>
             <div className="mt-2 text-[10px] font-bold text-blue-200 uppercase tracking-widest">Transaksi (IDR)</div>
           </div>
           <div>

@@ -62,11 +62,11 @@ export function Footer() {
             <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Perusahaan</h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li><Link to="/#tentang" className="hover:text-white transition-colors">Tentang Kami</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Karir (We're Hiring)</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog & Edukasi</a></li>
+              <li><span className="text-slate-500 cursor-not-allowed">Karir (Segera Hadir)</span></li>
+              <li><span className="text-slate-500 cursor-not-allowed">Blog & Edukasi (Segera Hadir)</span></li>
               <li><Link to="/#kontak" className="hover:text-white transition-colors">Hubungi Kami</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+              <li><span className="text-slate-500 cursor-not-allowed">Kebijakan Privasi (Segera Hadir)</span></li>
+              <li><span className="text-slate-500 cursor-not-allowed">Syarat & Ketentuan (Segera Hadir)</span></li>
             </ul>
           </div>
           
@@ -93,8 +93,8 @@ export function Footer() {
         <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-500">
           <p>&copy; {new Date().getFullYear()} ProductSchool.id | Solusi Digital Pendidikan Indonesia. Sistem Informasi Manajemen Sekolah Online.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a>
-            <a href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</a>
+            <span className="text-slate-500">Kebijakan Privasi (Segera Hadir)</span>
+            <span className="text-slate-500">Syarat & Ketentuan (Segera Hadir)</span>
           </div>
         </div>
       </div>
